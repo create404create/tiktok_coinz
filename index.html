@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TikTok Coin Shop (Demo)</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">
+      <span>TikTok Coin Shop (Demo)</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Username Section -->
+    <section class="card">
+      <h2>Enter TikTok Username</h2>
+      <p class="muted">Start by entering the username for the account you want to top up.</p>
+      <div class="row">
+        <input id="username" class="input" type="text" placeholder="@username" />
+        <button id="startBtn" class="btn">Continue</button>
+      </div>
+      <p id="usernameHint" class="hint">You must enter a username to proceed.</p>
+    </section>
+
+    <!-- Coins Section -->
+    <section id="coinsSection" class="card hidden">
+      <h2>Select Coins</h2>
+      <p class="muted">Prices match the video style. Edit easily in <code>script.js</code>.</p>
+
+      <div id="coinGrid" class="grid"></div>
+
+      <!-- Custom coins input (shown only when "Custom" is selected) -->
+      <div id="customBox" class="custom-box hidden">
+        <label for="customCoins" class="label">Enter custom coin amount</label>
+        <input id="customCoins" class="input" type="number" min="1" step="1" />
+      </div>
+    </section>
+
+    <!-- Card / Checkout Section -->
+    <section id="checkoutSection" class="card hidden">
+      <h2>Enter Card Details</h2>
+      <p class="muted">This is a demo only. Do not enter real card info.</p>
+
+      <form id="checkoutForm" novalidate>
+        <div class="grid grid-2">
+          <div class="field">
+            <label class="label" for="cardName">Name on card</label>
+            <input id="cardName" class="input" type="text" placeholder="" />
+          </div>
+          <div class="field">
+            <label class="label" for="cardNumber">Card number</label>
+            <input id="cardNumber" class="input" type="text" inputmode="numeric" placeholder="" />
+          </div>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="field">
+            <label class="label" for="expMonth">Expiry (MM)</label>
+            <input id="expMonth" class="input" type="text" inputmode="numeric" placeholder="" maxlength="2" />
+          </div>
+          <div class="field">
+            <label class="label" for="expYear">Expiry (YY)</label>
+            <input id="expYear" class="input" type="text" inputmode="numeric" placeholder="" maxlength="2" />
+          </div>
+          <div class="field">
+            <label class="label" for="cvv">CVV</label>
+            <input id="cvv" class="input" type="text" inputmode="numeric" placeholder="" maxlength="4" />
+          </div>
+        </div>
+
+        <div class="row between">
+          <div class="summary">
+            <div>Selected: <span id="summaryCoins">—</span></div>
+            <div>Total: <strong id="summaryPrice">$0.00</strong></div>
+          </div>
+          <button id="buyBtn" class="btn" type="submit">Buy</button>
+        </div>
+
+        <p id="formHint" class="hint">Fill out all fields to complete the (fake) purchase.</p>
+      </form>
+
+      <div class="cards-row">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Amex_logo.svg" alt="Amex" />
+      </div>
+    </section>
+  </main>
+
+  <!-- Loading / Success Modal -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div id="modalLoading" class="modal-state">
+        <div class="spinner" aria-hidden="true"></div>
+        <p class="modal-text">Processing your purchase…</p>
+      </div>
+      <div id="modalSuccess" class="modal-state hidden">
+        <div class="success-check" aria-hidden="true">✓</div>
+        <h3>Purchase Successful</h3>
+        <p>Coins will reflect on <span id="successUser">@username</span> shortly.</p>
+        <button id="closeModal" class="btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="container footer">
+    <small class="muted">Demo only • Not affiliated with TikTok • Responsive</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
